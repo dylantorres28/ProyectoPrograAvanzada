@@ -4,13 +4,12 @@ import App from './App.jsx' ;
 import LogIn from './Components/LogIn.jsx'
 import './index.css'
 import { BrowserRouter as Router} from 'react-router-dom';
+import Routers from './Routes/Routers.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
     <Router>
-      <App />
+      <Routers />
     </Router>
-  </React.StrictMode>,
 )
 
 
