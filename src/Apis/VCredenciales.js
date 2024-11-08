@@ -8,8 +8,9 @@ export const validarCredenciales = async (correo, contrasenna) => {
         const credencialesDTO = { Correo: correo, Contrasenna: contrasenna };
         const response = await axios.post(BASE_URL, credencialesDTO);
 
+        console.log('Respuesta de la API:', response)
         // Devuelve el valor booleano de la propiedad 'EsValido'
-        return response.data.EsValido;
+        return response.data.esValido;
     } catch (error) {
         console.error('Error al validar credenciales:', error);
         throw error; // Lanza el error para que pueda ser manejado donde se llame

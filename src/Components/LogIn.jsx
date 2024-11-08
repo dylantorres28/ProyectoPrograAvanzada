@@ -4,24 +4,27 @@ import {validarCredenciales } from "../Apis/VCredenciales.js"
 
 const LogIn = () => {
     const navigate = useNavigate(); // Definir navigate usando useNavigate
+    const [email, setEmail] = useState(''); // Estado para el email
+    const [password, setPassword] = useState(''); // Estado para la contraseña
+    const [errorMessage, setErrorMessage] = useState(''); // Estado para el mensaje de error
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        navigate('/home');
+        //navigate('/home');
         // Validar las credenciales usando la función importada desde Api.js
-        //try {
-          //  const isValid = await validarCredenciales(email, password);
-            
-            //if (isValid) {
+        try {
+            const isValid = await validarCredenciales(email, password);
+            console.log(isValid)
+            if (isValid) {
                 // Si las credenciales son correctas, redirige al home
-              //  navigate('/home');
-            //} else {
+                navigate('/home');
+            } else {
                 // Si las credenciales son incorrectas, muestra un mensaje de error
-              //  setErrorMessage('Correo o contraseña incorrectos');
-            //}
-        //} catch (error) {
-          //  setErrorMessage('Hubo un problema al validar las credenciales. Inténtalo nuevamente.');
-        //}
+                setErrorMessage('Correo o contraseña incorrectos');
+            }
+        } catch (error) {
+            setErrorMessage('Hubo un problema al validar las credenciales. Inténtalo nuevamente.');
+        }
     };
 
     
@@ -29,6 +32,8 @@ const LogIn = () => {
         <div className="flex min-h-screen items-center justify-center bg-[#1A1A1A] py-12 px-4 sm:px-6 lg:px-8">
             <div className="w-full max-w-md space-y-8">
                 <div >
+
+                
 
                     <h2 className="mt-6 text-center text-5xl font-extrabold text-[#F3F3F1] mb-8">Inicia Sesion</h2>
                     <div className=" bg-[#4E4E4E] p-[1px]">
@@ -44,6 +49,8 @@ const LogIn = () => {
                                     name="email"
                                     type="email"
                                     autoComplete="email"
+                                    value={email} 
+                                    onChange={(e) => setEmail(e.target.value)} // Actualiza el estado
                                     required
                                     className="appearance-none rounded-none bg-[#1A1A1A] relative block w-full px-2 py-2 border border-[#808080] placeholder-gray-500 text-white rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-[#9BC9B4] focus:z-10 sm:text-sm"
                                     placeholder="Email address"
@@ -56,12 +63,19 @@ const LogIn = () => {
                                     name="password"
                                     type="password"
                                     autoComplete="current-password"
+                                    value={password} 
+                                    onChange={(e) => setPassword(e.target.value)} // Actualiza el estado
                                     required
                                     className="appearance-none rounded-none bg-[#1A1A1A] relative block w-full px-3 py-2 border border-[#808080] placeholder-gray-500 text-white rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-[#9BC9B4] focus:z-10 sm:text-sm"
                                     placeholder="Password"
                                 />
                             </div>
                         </div>
+                        {errorMessage && (
+                        <div className="text-red-500 text-sm mt-2">
+                            {errorMessage}
+                        </div>
+                    )}
                         <div className="flex items-center justify-between">
                             <div className="flex items-center">
                                 <input
