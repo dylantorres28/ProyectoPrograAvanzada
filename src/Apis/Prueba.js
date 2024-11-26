@@ -11,3 +11,5 @@ export const registrarUsuario = async (userData) => {
         throw error; // Lanza el error para manejarlo en el componente
     }
 };
+
+

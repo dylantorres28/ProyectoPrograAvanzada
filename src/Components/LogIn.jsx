@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {validarCredenciales } from "../Apis/VCredenciales.js"
 
@@ -32,9 +32,6 @@ const LogIn = () => {
         <div className="flex min-h-screen items-center justify-center bg-[#1A1A1A] py-12 px-4 sm:px-6 lg:px-8">
             <div className="w-full max-w-md space-y-8">
                 <div >
-
-                
-
                     <h2 className="mt-6 text-center text-5xl font-extrabold text-[#F3F3F1] mb-8">Inicia Sesion</h2>
                     <div className=" bg-[#4E4E4E] p-[1px]">
                     </div>
@@ -91,7 +88,7 @@ const LogIn = () => {
 
                         </div>
                         <div>
-                            <button
+                            <button 
                                 type="submit"
                                 className="group relative w-full flex justify-center py-2 px-4 border border-[#91AEAD] text-sm font-medium rounded-full text-white bg-[#1A1A1A] hover:bg-[#91AEAD] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#9BC9B4]"
                             >

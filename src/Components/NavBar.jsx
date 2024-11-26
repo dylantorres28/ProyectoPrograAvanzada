@@ -1,19 +1,20 @@
 import React from "react";
 import SearchBar from "./UI/SearchBar.jsx";
-import {Cart} from './UI/Cart.jsx'
+import Profile from "./UI/Profile/Profile.jsx";
+import { Cart } from './UI/Cart.jsx'
 
-const NavBar = () => {
+const NavBar = ({onSearch}) => {
     return (
 
-        <div className="w-full h-[8%] flex justify-between items-center text-[#F3F3F1] px-4">
+        <div className="w-full h-[8%] flex justify-between items-center text-[#F3F3F1] ">
             <div>
-                Hola header
+                <Profile />
             </div>
             < div>
-                <SearchBar/>
+                <SearchBar onSearch={onSearch}/>
             </div>
             <div>
-                <Cart/>
+                <Cart />
             </div>
         </div>
     )
