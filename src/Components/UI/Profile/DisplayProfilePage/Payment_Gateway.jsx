@@ -126,7 +126,7 @@ const Payment_Gateway = () => {
     if (!factura) return <div>No se pudo obtener la factura en curso</div>;
  
     return (
-        <div className="container mx-auto p-4">
+        <div className="container bg-gradient-to-br from-[#01283A] to-black mx-auto p-4">
  
             {/* Mensaje de error */}
             {error && (
