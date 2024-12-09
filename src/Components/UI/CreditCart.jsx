@@ -1,9 +1,10 @@
 import React from 'react';
 
-const CreditCart = ({ cardData = {}, onCardDataChange, onSubmit }) => {
+const CreditCart = ({ cardData = {}, onCardDataChange, onSubmit, onPrevious, error, setError}) => {
 
     console.log('onCardDataChange prop:', onCardDataChange);
 
+    
     // Función para formatear el número de tarjeta
     const formatCardNumber = (value) => {
         const numbers = value.replace(/\D/g, ''); // Elimina caracteres no numéricos
@@ -68,13 +69,20 @@ const CreditCart = ({ cardData = {}, onCardDataChange, onSubmit }) => {
     };
 
     return (
-        <div className="flex min-h-screen items-center justify-center bg-[#1A1A1A] py-12 px-4 sm:px-6 lg:px-8">
+        <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-[#01283A] to-black py-12 px-4 sm:px-6 lg:px-8">
             <div className="w-full max-w-md space-y-8">
                 <div>
                     <h3 className="mt-6 text-center text-5xl font-extrabold text-[#F3F3F1] mb-8">Tarjeta de Crédito</h3>
                     <p className="text-center text-sm text-gray-500 mb-6">
                         Ingresa tu tarjeta de crédito para completar el registro
                     </p>
+
+                    {error && (
+                        <div className="text-red-500 text-sm text-center mb-4">
+                            {error}
+                        </div>
+                    )}
+                    
                     <div className=" bg-[#4E4E4E] p-[1px]"></div>
                     <form onSubmit={handleSubmit} className="mt-8 space-y-5">
                         <div className="space-y-5">
@@ -124,6 +132,13 @@ const CreditCart = ({ cardData = {}, onCardDataChange, onSubmit }) => {
                                 />
                             </div>
                         </div>
+                        <button
+                            type="button" // Changed to type="button" to prevent form submission
+                            onClick={onPrevious} // Add the onPrevious prop handler
+                            className="group relative w-full flex justify-center py-2 px-4 border border-[#91AEAD] text-sm font-medium rounded-full text-white bg-[#1A1A1A] hover:bg-[#91AEAD] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#9BC9B4]"
+                            >
+                            Anterior
+                        </button>
                         <button
                             type="submit"
                             className="group relative w-full flex justify-center py-2 px-4 border border-[#91AEAD] text-sm font-medium rounded-full text-white bg-[#1A1A1A] hover:bg-[#91AEAD] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#9BC9B4]"

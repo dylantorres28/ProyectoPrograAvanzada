@@ -10,7 +10,7 @@ export const validarCredenciales = async (correo, contrasenna) => {
 
         console.log('Respuesta de la API:', response)
         // Devuelve el valor booleano de la propiedad 'EsValido'
-        return response.data.esValido;
+        return response.data;
     } catch (error) {
         console.error('Error al validar credenciales:', error);
         throw error; // Lanza el error para que pueda ser manejado donde se llame

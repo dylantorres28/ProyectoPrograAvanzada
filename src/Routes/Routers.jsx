@@ -14,12 +14,15 @@ import Artist from "../Components/UI/HomeDisplay/DisplayHomePages/Artist.jsx";
 import Generos from "../Components/UI/HomeDisplay/DisplayHomePages/Generos.jsx";
 import Welcome from "../Components/UI/HomeDisplay/DisplayHomePages/Welcome.jsx";
 import SearchDisplay from "../Components/UI/HomeDisplay/DisplayHomePages/SearchDisplay.jsx";
+import Payment_Gateway from "../Components/UI/Profile/DisplayProfilePage/Payment_Gateway.jsx"
+
 
 const Routers = () => {
     return <Routes>
         <Route path='/' element={<LogIn />} />
         <Route path='/login' element={<LogIn />} />
         <Route path='/register' element={<Register />} />
+        <Route path="/factura" element={<Payment_Gateway />}/>
 
         {/* Las Rutas del Home*/}
         <Route path='/home' element={<App />} >

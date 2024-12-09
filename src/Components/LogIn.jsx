@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {validarCredenciales } from "../Apis/VCredenciales.js"
+import  useUser  from '../Hooks/useUser.js'
 
 const LogIn = () => {
+    const { setUser } = useUser(); // Hook para acceder al contexto de usuario
     const navigate = useNavigate(); // Definir navigate usando useNavigate
     const [email, setEmail] = useState(''); // Estado para el email
     const [password, setPassword] = useState(''); // Estado para la contraseña
@@ -10,26 +12,30 @@ const LogIn = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        //navigate('/home');
-        // Validar las credenciales usando la función importada desde Api.js
+    
         try {
-            const isValid = await validarCredenciales(email, password);
-            console.log(isValid)
-            if (isValid) {
-                // Si las credenciales son correctas, redirige al home
-                navigate('/home');
-            } else {
-                // Si las credenciales son incorrectas, muestra un mensaje de error
-                setErrorMessage('Correo o contraseña incorrectos');
-            }
+          // Lógica para enviar las credenciales a la API
+          const response = await validarCredenciales(email, password);
+    
+          if (response.esValido) {
+            // Guardar los datos en el contexto
+            setUser({
+              email: email,
+              userType: response.perfil, //campo devuelto por la API
+            });
+            navigate('/home');
+          } else {
+            setErrorMessage('Correo o contraseña incorrectos');
+          }
         } catch (error) {
-            setErrorMessage('Hubo un problema al validar las credenciales. Inténtalo nuevamente.');
+          console.error('Error al autenticar:', error);
+          setErrorMessage('Hubo un error al iniciar sesión');
         }
-    };
+      };
 
     
     return (
-        <div className="flex min-h-screen items-center justify-center bg-[#1A1A1A] py-12 px-4 sm:px-6 lg:px-8">
+        <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-[#01283A] to-black py-12 px-4 sm:px-6 lg:px-8">
             <div className="w-full max-w-md space-y-8">
                 <div >
                     <h2 className="mt-6 text-center text-5xl font-extrabold text-[#F3F3F1] mb-8">Inicia Sesion</h2>

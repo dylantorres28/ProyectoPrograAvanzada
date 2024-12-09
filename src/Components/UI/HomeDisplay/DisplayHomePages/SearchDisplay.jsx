@@ -23,7 +23,7 @@ const SearchDisplay = () => {
                             return (
                                 <div
                                     key={index}
-                                    className="cursor-pointer p-4 rounded-lg hover:bg-black  hover:bg-opacitity-80 text-white"
+                                    className="cursor-pointer p-4 rounded-lg bg-white/5 bg-opacitity-80  hover:bg-black  hover:bg-opacitity-80 text-white"
                                     onClick={() => {
                                         console.log('Cancion seleccionado:', track);
                                     }}
