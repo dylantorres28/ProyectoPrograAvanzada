@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Importar useNavigate
 import { ConsultarFacturasBiblioteca } from '../Apis/HistorialApi';
 import useUser from '../Hooks/useUser.js';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const SideBar = () => {
     const [biblioteca, setBiblioteca] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const { user } = useUser();
+    const { user, setUser } = useUser();
+    const navigate = useNavigate(); // Hook para navegación
 
     useEffect(() => {
         const fetchBiblioteca = async () => {
@@ -42,11 +45,16 @@ const SideBar = () => {
         fetchBiblioteca();
     }, [user?.email]);
 
+    const handleLogout = () => {
+        setUser(null); // Limpiar el contexto del usuario
+        navigate('/'); // Redirigir al inicio de sesión
+    };
     return (
         <div className="w-[25%] h-full p-2 flex-col gap-2 text-[#F3F3F1] hidden lg:flex">
             <div className="bg-black bg-opacity-50 overflow-auto h-[100%] rounded-lg">
                 <div className='p-4 flex items-center justify-between'>
                     <p className="text-lg font-bold">Mi Biblioteca</p>
+
                 </div>
                 {loading ? (
                     <div className="text-white p-4">Cargando biblioteca...</div>
@@ -72,6 +80,14 @@ const SideBar = () => {
                         )}
                     </div>
                 )}
+                <div>
+                    {/*Boton que cierra sesion y te envia al logIn*/}
+                    <button onClick={handleLogout}
+                        className="bottom-4 right-4 p-3 rounded-full text-red-500 hover:bg-white transition"
+                    >
+                        <LogoutIcon />
+                    </button>
+                </div>
             </div>
         </div>
     );

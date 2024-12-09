@@ -15,7 +15,8 @@ import Generos from "../Components/UI/HomeDisplay/DisplayHomePages/Generos.jsx";
 import Welcome from "../Components/UI/HomeDisplay/DisplayHomePages/Welcome.jsx";
 import SearchDisplay from "../Components/UI/HomeDisplay/DisplayHomePages/SearchDisplay.jsx";
 import Payment_Gateway from "../Components/UI/Profile/DisplayProfilePage/Payment_Gateway.jsx"
-
+import Tracks from "../Components/UI/HomeDisplay/DisplayHomePages/Tracks.jsx";
+import Albums from "../Components/UI/HomeDisplay/DisplayHomePages/Albums.jsx"; 
 
 const Routers = () => {
     return <Routes>
@@ -29,6 +30,8 @@ const Routers = () => {
             <Route path="search" element={<SearchDisplay />} />
             <Route path="welcome" element={<Welcome />} />
             <Route path="artist/:id" element={<Artist />} />
+            <Route path="track/:id" element={<Tracks />} />
+            <Route path="album/:id" element={<Albums />} />
             <Route path="generos" element={<Generos />} />
         </Route>
 

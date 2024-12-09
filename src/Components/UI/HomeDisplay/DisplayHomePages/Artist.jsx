@@ -33,7 +33,7 @@ const Artist = () => {
           {
             method: "GET",
             headers: {
-              'x-rapidapi-key': '2b98759b01msh4b5671bdee372fep14cf6cjsnf0ad1ea9d136',
+              'x-rapidapi-key': '6d9fffcfdemshd08751e3d52224dp1617f2jsnedd42c360250',
               'x-rapidapi-host': 'spotify23.p.rapidapi.com',
             },
           }
@@ -52,7 +52,7 @@ const Artist = () => {
           {
             method: "GET",
             headers: {
-              'x-rapidapi-key': '2b98759b01msh4b5671bdee372fep14cf6cjsnf0ad1ea9d136',
+              'x-rapidapi-key': '6d9fffcfdemshd08751e3d52224dp1617f2jsnedd42c360250',
               'x-rapidapi-host': 'spotify-downloader9.p.rapidapi.com',
             },
           }
@@ -114,6 +114,7 @@ const Artist = () => {
               <th className="px-4 py-2">#</th>{/*Columna*/}
               <th className="px-4 py-2">Título</th>
               <th className="px-4 py-2">Álbum</th>
+              <th className="px-4 py-2">Link</th>
               <th className="px-4 py-2"><AccessTimeFilledIcon /></th>
               <th className="px-4 py-2">Adquirir</th>
             </tr>
@@ -134,8 +135,8 @@ const Artist = () => {
               const durationInSeconds = Math.floor(track.duration_ms / 1000)
               const minutes = Math.floor(durationInSeconds / 60)
               const second = durationInSeconds % 60
-              const Total = (`${minutes}:${second}`)
-
+              const Total = (`${minutes}:${second.toString().padStart(2, '0')}`)
+              
               return (
                 <tr key={track.id} className="">
                   <td>
@@ -164,6 +165,15 @@ const Artist = () => {
                     </div>
                   </td>
                   <td className="px-4 py-2">{track.album.name}</td>
+                  <td className="px-4 py-2">
+                    <a
+                      href={track.external_urls.spotify}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white hover:underline"
+                    >
+                      Ir al enlace
+                    </a></td>
                   <td className="px-4 py-2">{Total || "Sin Duracion"}</td>
                   <td className="px-4 py-2">
                     <button

@@ -21,7 +21,7 @@ const App = () => {
         {
           method: 'GET',
           headers: {
-            'x-rapidapi-key': '2b98759b01msh4b5671bdee372fep14cf6cjsnf0ad1ea9d136',
+            'x-rapidapi-key': '6d9fffcfdemshd08751e3d52224dp1617f2jsnedd42c360250',
             'x-rapidapi-host': 'spotify23.p.rapidapi.com'
           }
         }

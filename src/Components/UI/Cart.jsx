@@ -42,7 +42,7 @@ export function Cart() {
                     <AddToCart />
                 </div>
                 <div className="w-full p-7">
-                    <button className="bg-black" onClick={handleContinue}>Continuar</button>
+                    <button className="bg-black w-full hover:bg-white/5 rounded-lg p-3" onClick={handleContinue}>Continuar</button>
                 </div>
             </div>
 
